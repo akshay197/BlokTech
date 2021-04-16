@@ -1,0 +1,26 @@
+{
+  "name": "Github-Repository",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshay197/BlokTech.git"
+  },
+  "keywords": [],
+  "author": "Akshay Kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akshay197/BlokTech/issues"
+  },
+  "homepage": "https://github.com/akshay197/BlokTech#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.7"
+  }
+}

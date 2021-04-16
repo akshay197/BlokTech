@@ -23,3 +23,7 @@
 * [Feedback](https://github.com/akshay197/BlokTech/wiki/feedback)
 * [Progress](https://github.com/akshay197/BlokTech/wiki/progress)
 * [Resources](https://github.com/akshay197/BlokTech/wiki/resources)
+
+## Frontend Development
+* [Progressive Enhancement](https://github.com/akshay197/BlokTech/wiki/progressive_enhancement)
+
