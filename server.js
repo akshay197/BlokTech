@@ -9,8 +9,39 @@ nunjucks.configure('views',{
   express: app
 });
 
+let personaArr = [{
+  image:"images/therock.jpg",
+  naam: "The Rock",
+  leeftijd: "26",
+  locatie: "Amsterdam",
+  beschrijving: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sapien libero, elementum eget ultricies lacinia, mattis eu ipsum.",
+},
+{
+  image:"images/ak47.jpg",
+  naam: "AK47",
+  leeftijd: "47",
+  locatie: "New Delhi",
+  beschrijving: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sapien libero, elementum eget ultricies lacinia, mattis eu ipsum.",
+},
+{
+  image:"images/hrithik.jpg",
+  naam: "Hrithik",
+  leeftijd: "43",
+  locatie: "Mumbai",
+  beschrijving: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sapien libero, elementum eget ultricies lacinia, mattis eu ipsum.",
+},
+{
+  image:"images/ironman.jpg",
+  naam: "Iron man",
+  leeftijd: "40",
+  locatie: "New York",
+  beschrijving: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sapien libero, elementum eget ultricies lacinia, mattis eu ipsum.",
+}]
+
 app.get('/', (req, res) => {
-  res.render('index.njk')
+  let persona = personaArr[Math.floor(Math.random() * personaArr.length)];
+  console.log(persona);
+  res.render('index.njk', {persona})
 })
 
 app.get('/modes', (req, res) => {
@@ -30,4 +61,6 @@ app.use(function(req,res,next){
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+
 

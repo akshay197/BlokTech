@@ -1,5 +1,16 @@
 {% extends "template.njk" %}
 {% block main %}
-    <h1>YOo thi is AK47</h1>
-    <p>yoyoyoyoy</p>
+<img src="images/codm.png">
+    <article>
+        <img src={{persona.image}}>
+        <section>
+            <h1>{{persona.naam}}<span>, {{persona.leeftijd}}</span></h1>
+            <h2>{{persona.locatie}}</h2>
+            <p>{{persona.beschrijving}}</p>
+        </section>
+    </article>
+    <section class="buttons">
+    <button><i class="fas fa-times dislike"></i></button>
+    <button><i class="fas fa-thumbs-up like"></i></button>
+    </section>
 {% endblock %}
