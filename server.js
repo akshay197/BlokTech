@@ -5,11 +5,16 @@ const port = 3000;
 
 const nunjucks = require('nunjucks');
 
+app.use(express.json()) //bodyparser toegevoegd (iets dat het formulier functioneel maakt in JS)
+app.use(express.urlencoded()) 
+
+// nunjucks geinitiliaseerd
 nunjucks.configure('views', {
         autoescape: true,
         express: app,
 });
 
+// persona array aangemaakt, objecten en properties
 const personaArr = [
         {
                 image: 'images/therock.jpg',
@@ -45,26 +50,42 @@ const personaArr = [
         },
 ];
 
+// een nieuw profiel inladen 
+let persona = {};
+// een willekeurig profiel telkens inladen
+next = () => {
+        persona = personaArr[Math.floor(Math.random() * personaArr.length)];
+}
+
+// homepage
 app.get('/', (req, res) => {
-        const persona = personaArr[Math.floor(Math.random() * personaArr.length)];
-        console.log(persona);
+        // console.log(persona);
+        next();
         res.render('index.njk', { persona });
 });
 
-app.get('/modes', (req, res) => {
-        res.send('Battle Royale');
+// het huidige profiel kunnen liken of disliken
+app.post('/', (req, res) => {
+        persona.preference = req.body.preference;
+        console.log(persona)
+        next();
+        res.render('index.njk', { persona });
+});
+
+// de gelikete profielen
+app.get('/likes', (req, res) => {
+        const likes = personaArr;
+        res.render('likes.njk', { likes });
 });
 
 app.use(express.static('static/public'));
 
-app.get('/modes/:modeId/:slug', (req, res) => {
-        res.send(`Je bevind je nu op de pagina van de mode: ${req.params.slug}`);
-});
-
+//error message
 app.use(function (req, res, next) {
         res.status(404).send('404 pagina niet gevonden');
 });
 
+//op welke port de server draait
 app.listen(port, () => {
         console.log(`Example app listening at http://localhost:${port}`);
 });

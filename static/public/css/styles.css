@@ -1,15 +1,15 @@
-*{
+* {
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-article{
+.card {
     height: 100vh;
     width: 100vw;
 }
 
-article img{
+.card img {
     height: 100vh;
     width: 100vw;
     object-fit: cover;
@@ -19,37 +19,37 @@ article img{
     z-index: -1;
 }
 
-h1, h2, h3, h4, h5, h6, p{
+h1, h2, h3, h4, h5, h6, p {
     color: white;
 }
 
-article section h1{
+.card section h1 {
     font-family: 'Fjalla One', sans-serif;
     font-size: 2rem;
     margin-bottom: 4px;
     letter-spacing: 0.05rem;
 }
 
-article section h2{
+.card section h2 {
     font-family: 'Fjalla One', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 12px;
     letter-spacing: 0.05rem;
 }
 
-article section p{
+.card section p {
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
 }
 
-article section{
+.card section {
     position: absolute;
     left: 24px;
     right: 24px;
     bottom: 112px;
 }
 
-article::before{
+.card::before {
     content: "";
     width: 100vw;
     height: 100vh;
@@ -59,17 +59,9 @@ article::before{
     left: 0;
 }
 
-section button{
-    border: none;
-    background: white;
-    border-radius: 50%;
-    width: 4rem;
-    height: 4rem;
-}
-
-.buttons{
+form {
     position: absolute;
-    bottom:0;
+    bottom: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -78,28 +70,47 @@ section button{
     box-sizing: border-box;
 }
 
-button i{
-    font-size: 2rem;
-    transition: 0.5s;
+form > div {
+    height: 3.5rem;
+    width: 3.5rem;
 }
 
-.dislike{
+
+label {
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+}
+
+label i {
+    font-size: 2rem;
+    transition: 0.5s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dislike {
     color: red;
 }
 
-.dislike:hover{
+.dislike:hover {
     color: darkred;
 }
 
-.like{
+.like {
     color: dodgerblue;
 }
 
-.like:hover{
+.like:hover {
     color: darkblue;
 }
 
-img{
+.logo {
     height: 3rem;
     width: 8rem;
     position: absolute;
@@ -108,3 +119,80 @@ img{
     object-fit: cover;
 }
 
+a {
+    border: none;
+    background: white;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+a i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    transition: 0.5s;
+    color: grey;
+}
+
+/* like list */
+.like-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.like-item {
+    height: 7rem;
+    width: 100%;
+}
+
+.like-item+.like-item {
+    margin-top: 1rem;
+}
+
+.like-item article {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.like-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.like-item h1, .like-item h2 {
+    color: black;
+}
+
+.like-item section {
+    padding: 16px;
+}
+
+.like-item section h1 {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+    letter-spacing: 0.05rem;
+}
+
+.like-item section h2 {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 1em;
+    margin-bottom: 12px;
+    letter-spacing: 0.05rem;
+}
+
+input[type='radio'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+}

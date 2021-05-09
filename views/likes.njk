@@ -1,0 +1,19 @@
+{% extends "template.njk" %}
+{% block main %}
+
+    <ul class='like-list'>
+        {% for like in likes %}
+            <li class='like-item'>
+                <article>
+                    <img src={{like.image}}>
+                    <section>
+                        <h1>{{like.naam}}
+                            <span>, {{like.leeftijd}}</span></h1>
+                        <h2>{{like.locatie}}</h2>
+                    </section>
+                </article>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

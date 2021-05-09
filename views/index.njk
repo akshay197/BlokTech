@@ -1,16 +1,33 @@
 {% extends "template.njk" %}
 {% block main %}
-<img src="images/codm.png">
-    <article>
+    <img class='logo' src="images/codm.png">
+    <a href="/likes">
+        <i class="fas fa-arrow-right likes"></i>
+    </a>
+    <article class='card'>
         <img src={{persona.image}}>
         <section>
-            <h1>{{persona.naam}}<span>, {{persona.leeftijd}}</span></h1>
+            <h1>{{persona.naam}}
+                <span>, {{persona.leeftijd}}</span></h1>
             <h2>{{persona.locatie}}</h2>
             <p>{{persona.beschrijving}}</p>
         </section>
     </article>
     <section class="buttons">
-    <button><i class="fas fa-times dislike"></i></button>
-    <button><i class="fas fa-thumbs-up like"></i></button>
+        <form action='/' method='post'>
+            <div>
+                <input type="radio" id="dislike" name="preference" value="dislike" required>
+                <label for="dislike">
+                    <i class="fas fa-times dislike"></i>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="like" name="preference" value="like">
+                <label for="like">
+                    <i class="fas fa-thumbs-up like"></i>
+                </label>
+            </div>
+            <input type='submit'>
+        </form>
     </section>
 {% endblock %}
