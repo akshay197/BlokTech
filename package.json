@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
-    
   },
   "repository": {
     "type": "git",
@@ -22,6 +21,7 @@
   },
   "homepage": "https://github.com/akshay197/BlokTech#readme",
   "dependencies": {
+    "dotenv": "^9.0.1",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.7",
