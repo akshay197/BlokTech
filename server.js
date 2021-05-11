@@ -1,5 +1,19 @@
 require('dotenv').config()
 
+const MongoClient = require('mongodb').MongoClient;
+
+const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@projecttechdatabase.kipgg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+
+MongoClient.connect(connectionString, { useUnifiedTopology: true })
+        .then(client => {
+                console.log("Connected to Database");
+                const db = client.db('myFirstDatabase');
+                console.log(db);
+        })
+        .catch(error => {
+                console.log(error.message);
+        });
+
 const express = require('express');
 
 const app = express();
@@ -8,7 +22,7 @@ const port = 3000;
 const nunjucks = require('nunjucks');
 
 app.use(express.json()) //bodyparser toegevoegd (iets dat het formulier functioneel maakt in JS)
-app.use(express.urlencoded()) 
+app.use(express.urlencoded())
 
 // nunjucks geinitiliaseerd
 nunjucks.configure('views', {
