@@ -6,9 +6,8 @@ const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
         .then(client => {
-                console.log("Connected to Database");
                 const db = client.db('myFirstDatabase');
-                console.log(db);
+                console.log('connected');
         })
         .catch(error => {
                 console.log(error.message);
