@@ -65,6 +65,8 @@ const personaArr = [
         },
 ];
 
+let likedArr = [];
+
 // een nieuw profiel inladen 
 let persona = {};
 // een willekeurig profiel telkens inladen
@@ -82,6 +84,11 @@ app.get('/', (req, res) => {
 // het huidige profiel kunnen liken of disliken
 app.post('/', (req, res) => {
         persona.preference = req.body.preference;
+
+        if(persona.preference === 'like') {
+                likedArr.push(persona);
+        }
+
         console.log(persona)
         next();
         res.render('index.njk', { persona });
@@ -89,8 +96,7 @@ app.post('/', (req, res) => {
 
 // de gelikete profielen
 app.get('/likes', (req, res) => {
-        const likes = personaArr;
-        res.render('likes.njk', { likes });
+        res.render('likes.njk', { likedArr });
 });
 
 app.use(express.static('static/public'));
