@@ -1,20 +1,21 @@
 {% extends "template.njk" %}
 {% block main %}
-<h1 class='h1Like'>Jouw Likes</h1>
-<a class='homeLike' href='/'>Terug naar home</a>
-    <ul class='like-list'>
-        {% for liked in likedArr %}
-            <li class='like-item'>
-                <article>
-                    <img src={{liked.image}}>
-                    <section>
-                        <h1>{{liked.naam}}
-                            <span>, {{liked.leeftijd}}</span></h1>
-                        <h2>{{liked.locatie}}</h2>
-                    </section>
-                </article>
-            </li>
-        {% endfor %}
-    </ul>
-
+    <main class='matches'>
+        <h1 class='h1Like'>🚀 Jouw matches</h1>
+        <ul class='like-list'>
+            {% for user in userMatches %}
+                <li class='like-item'>
+                    <article>
+                        <img src={{user.image}}>
+                        <section>
+                            <h1>{{user.naam}}
+                                <span>- {{user.leeftijd}}</span></h1>
+                            <h2>{{user.locatie}}</h2>
+                        </section>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+        <a class='homeLike' href='/'>Terug naar home</a>
+    </main>
 {% endblock %}

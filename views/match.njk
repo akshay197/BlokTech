@@ -1,0 +1,17 @@
+{% extends "template.njk" %}
+{% block main %}
+    <section class='match'>
+        <h1 class='match-text'>🔥 It's a match!</h1>
+        <p class='bottom-match-text'>You and <span>{{displayedUser.naam}}</span> have liked each other. Let's play!</p>
+
+        <div class='images'>
+            <img src='../../images/ak47.jpg'>
+            <img src='../../{{displayedUser.image}}'>
+        </div>
+
+        <div class='buttons-match'>
+            <a href='/matches' class='view-contacts'>View contacts</a>
+            <a href='/' class='keep-swiping'>Keep swiping</a>
+        </div>
+    </section>
+{% endblock %}
