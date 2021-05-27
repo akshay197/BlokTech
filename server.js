@@ -77,6 +77,7 @@ app.get('/', (req, res) => {
 
                             if (dislike !== otherUserId && like !== otherUserId) {
                                 unknownUsers.push(allUsers[i]);
+                                console.log(unknownUsers)
                             }
                         }
                     }
