@@ -41,17 +41,8 @@ async function connectToDatabase(err, next) {
         console.log('Connected to database');
         database = client.db('myFirstDatabase');
         users = database.collection('users');
-        users.findOne(
-            {
-                _id: ObjectId(myId),
-            },
-            (err, user) => {
-                if (err) throw err;
-                myUser = user;
-            }
-        );
-    }  catch {
-            throw err;
+    } catch {
+        throw err;
     }
 }
 connectToDatabase();
@@ -62,31 +53,42 @@ let unknownUsers = [];
 
 // homepage
 app.get('/', (req, res) => {
-    // zoek naar users die niet dezelfde id hebben als mijn profiel
-    users.find({ _id: { $ne: ObjectId(myId) } }).toArray((error, allUsers) => {
-        if (error) throw error;
-        unknownUsers = [];
 
-        // kijk of ik een gebruiker al eerder heb gedisliked of geliked. als dat niet zo is stuur dan de gebruiker naar de unknown user array
-        for (let i = 0; i < allUsers.length; i++) {
-            const otherUserId = JSON.stringify(ObjectId(allUsers[i]._id).valueOf());
-            for (let j = 0; j < myUser.dislikes.length; j++) {
-                const dislike = JSON.stringify(myUser.dislikes[j]).valueOf();
-                for (let k = 0; k < myUser.likes.length; k++) {
-                    const like = JSON.stringify(myUser.likes[k]).valueOf();
-                  
-                    if (dislike !== otherUserId && like !== otherUserId) {
-                        unknownUsers.push(allUsers[i]);
+    users.findOne(
+        {
+            _id: ObjectId(myId),
+        },
+        (err, user) => {
+            if (err) throw err;
+            myUser = user;
+
+            // zoek naar users die niet dezelfde id hebben als mijn profiel
+            users.find({ _id: { $ne: ObjectId(myId) } }).toArray((error, allUsers) => {
+                if (error) throw error;
+                unknownUsers = [];
+
+                // kijk of ik een gebruiker al eerder heb gedisliked of geliked. als dat niet zo is stuur dan de gebruiker naar de unknown user array
+                for (let i = 0; i < allUsers.length; i++) {
+                    const otherUserId = JSON.stringify(ObjectId(allUsers[i]._id).valueOf());
+                    for (let j = 0; j < myUser.dislikes.length; j++) {
+                        const dislike = JSON.stringify(myUser.dislikes[j]).valueOf();
+                        for (let k = 0; k < myUser.likes.length; k++) {
+                            const like = JSON.stringify(myUser.likes[k]).valueOf();
+
+                            if (dislike !== otherUserId && like !== otherUserId) {
+                                unknownUsers.push(allUsers[i]);
+                            }
+                        }
                     }
                 }
+
+                // kies een willekeurige gebruiker uit om te laten zien
+                displayedUser = unknownUsers[Math.floor(Math.random() * unknownUsers.length)];
+
+                res.render('index.njk', { unknownUsers, displayedUser });
             }
-        }
-
-        // kies een willekeurige gebruiker uit om te laten zien
-        displayedUser = unknownUsers[Math.floor(Math.random() * unknownUsers.length)];
-
-        res.render('index.njk', { unknownUsers, displayedUser });
-    });
+            );
+        });
 });
 
 // het huidige profiel kunnen liken of disliken
@@ -112,15 +114,15 @@ app.post('/', (req, res) => {
 
     // check voor een match
     for (let i = 0; i < displayedUser.likes.length; i++) {
-        if(JSON.stringify(displayedUser.likes[i]).valueOf() === JSON.stringify(ObjectId(myUser._id).valueOf())) {
+        if (JSON.stringify(displayedUser.likes[i]).valueOf() === JSON.stringify(ObjectId(myUser._id).valueOf())) {
             match = true;
         } else {
             match = false;
-        }      
-    } 
+        }
+    }
 
     // stuur gebruiker naar de 'its a match' pagina als er een match is.
-    if(req.body.preference === 'like' && match === true) {
+    if (req.body.preference === 'like' && match === true) {
         res.redirect('/match')
         console.log('match')
     } else {
@@ -136,28 +138,38 @@ app.get('/match', (req, res) => {
 
 // de matchende profielen worden hier getoond
 app.get('/matches/', (req, res) => {
-    // zoek op alle gebruikers die niet de _id hebben van mijn (tijdelijke) gebruiker
-    users.find({ _id: { $ne: ObjectId(myId) } }).toArray((error, allUsers) => {
-        if (error) throw error;
 
-        // array voor alle matches
-        const userMatches = [];
+    users.findOne(
+        {
+            _id: ObjectId(myId),
+        },
+        (err, user) => {
+            if (err) throw err;
+            myUser = user;
 
-        // check of een andere gebruiker mij heeft geliked en of ik hem ook heb geliked
-        for (let i = 0; i < allUsers.length; i++) {
-            for (let j = 0; j < allUsers[i].likes.length; j++) {
-                for (let k = 0; k < myUser.likes.length; k++) {
-                    if(JSON.stringify(allUsers[i].likes[j]).valueOf() === JSON.stringify(ObjectId(myUser._id).valueOf()) && JSON.stringify(myUser.likes[k]).valueOf() === JSON.stringify(ObjectId(allUsers[i]._id).valueOf()))
-                    {
-                        // als ik een user heb geliked en hij heeft mij terug geliked, stuur hem dan naar de userMatches array
-                        userMatches.push(allUsers[i])
+            // zoek op alle gebruikers die niet de _id hebben van mijn (tijdelijke) gebruiker
+            users.find({ _id: { $ne: ObjectId(myId) } }).toArray((error, allUsers) => {
+                if (error) throw error;
+
+                // array voor alle matches
+                const userMatches = [];
+
+                // check of een andere gebruiker mij heeft geliked en of ik hem ook heb geliked
+                for (let i = 0; i < allUsers.length; i++) {
+                    for (let j = 0; j < allUsers[i].likes.length; j++) {
+                        for (let k = 0; k < myUser.likes.length; k++) {
+                            if (JSON.stringify(allUsers[i].likes[j]).valueOf() === JSON.stringify(ObjectId(myUser._id).valueOf()) && JSON.stringify(myUser.likes[k]).valueOf() === JSON.stringify(ObjectId(allUsers[i]._id).valueOf())) {
+                                // als ik een user heb geliked en hij heeft mij terug geliked, stuur hem dan naar de userMatches array
+                                userMatches.push(allUsers[i])
+                            }
+                        }
                     }
                 }
+                console.log(userMatches)
+                res.render('likes.njk', { userMatches });
             }
-        } 
-        console.log(userMatches)
-        res.render('likes.njk', { userMatches });
-    });
+            );
+        });
 });
 
 app.use(express.static('static/public'));
