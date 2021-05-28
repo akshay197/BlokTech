@@ -5,31 +5,39 @@ Het welbekende spel Call of Duty heeft al een poos een mobiele versie uitgebrach
 # Mijn feature
 Als feature heb ik voor matching gekozen. Als iemand mij liked en ik hem, dan krijgen wij een match! Dit komt dan in een lijstje te staan. Je kan ook swipen door middel van een javascript library genaamd Swipe-listener. 
 
-![Match](images/match.PNG)
+![Match](images/match.png)
 
 # Installatie
 Kopieer de repository naar je eigen machine en installeer de bijbehorende package:
+
 > git clone https://github.com/akshay197/BlokTech.git
+
+
 > npm install
 
 Nu kan je de applicatie starten door deze commando uit te voeren:
+
 > npm start
+
+
 > Example app listening at http://localhost:3000
+
+
 > Connected to database
 
 # Database
 De database heet myFirstDatabase en de collectie daarin heet users. Een user ziet er zo uit:
 ```Java
-_id: ObjectId("007")    ObjectId (automatisch gegenereerd)
-naam: "Akshay Kumar"    String
-leeftijd: "24"          String
-beschrijving: "Test"    String
-locatie: "Amsterdam"    String
-image: "images/image.jpg" String
-likes:                  Array
-    ObjectId("008")     ObjectId
-dislikes:               Array
-    ObjectId("009")     ObjectId
+_id: ObjectId("007")        ObjectId (automatisch gegenereerd)
+naam: "Akshay Kumar"        String
+leeftijd: "24"              String
+beschrijving: "Test"        String
+locatie: "Amsterdam"        String
+image: "images/image.jpg"   String
+likes:                      Array
+    ObjectId("008")         ObjectId
+dislikes:                   Array
+    ObjectId("009")         ObjectId
 ```
 
 # Documentatie
