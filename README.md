@@ -5,7 +5,7 @@ Het welbekende spel Call of Duty heeft al een poos een mobiele versie uitgebrach
 # Mijn feature
 Als feature heb ik voor matching gekozen. Als iemand mij liked en ik hem, dan krijgen wij een match! Dit komt dan in een lijstje te staan. Je kan ook swipen door middel van een javascript library genaamd Swipe-listener. 
 
-![Match](images/match.png)
+![Match](images/match.jpg)
 
 # Installatie
 Kopieer de repository naar je eigen machine en installeer de bijbehorende package:
