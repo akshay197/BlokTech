@@ -1,0 +1,15 @@
+// Imports
+@charset "UTF-8";
+
+// Import global styling
+@import 
+    'global/global';
+
+// Import partials
+@import
+    'partials/footer';
+
+// Import components
+@import
+    'components/card',
+    'components/matchlist';

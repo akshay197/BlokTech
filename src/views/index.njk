@@ -1,0 +1,40 @@
+{% extends "template/template.njk" %}
+{% block title %}
+    Home
+{% endblock %}
+{% block main %}
+    <section>
+        {% if unknownUsers.length > 0 %}
+            <article class='card'>
+                <img src='/images/{{displayedUser.image}}'>
+                <section class='information'>
+                    <h1>{{displayedUser.location}}
+                        <h2>{{displayedUser.username}} · <span>{{displayedUser.age}}</span></h2>
+                        <p>{{displayedUser.description}}</p>
+
+                        <section class="buttons">
+                            <form action='/' method='post'>
+                                <div>
+                                    <input type="radio" id="dislike" name="preference" value="dislike" required>
+                                    <label for="dislike">
+                                        <span class="material-icons">thumb_down</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="like" name="preference" value="like">
+                                    <label for="like">
+                                        <span class="material-icons">thumb_up</span>
+                                    </label>
+                                </div>
+                                <button class="verzend" type='submit'>Submit</button>
+                            </form>
+                        {% else %}
+                            <section class='empty'>
+                                <img src='/images/empty.png'>
+                                <p>You're all done.</p>
+                            </section>
+                        {% endif %}
+                    </section>
+                </section>
+            </article>
+        {% endblock %}

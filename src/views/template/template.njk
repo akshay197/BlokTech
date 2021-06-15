@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>
+      {% block title %}{%endblock%}
+    </title>
+    <meta name="description" content="Target Finder">
+    <meta name="author" content="Akshay Kumar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
+
+    <!-- Material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  </head>
+
+  <body>
+    <main>
+
+      {% block main %}
+
+      {%endblock%}
+
+      {% include 'partials/footer.njk' %}
+    </main>
+
+    <script src='/js/app.js'></script>
+  </body>
+</html>

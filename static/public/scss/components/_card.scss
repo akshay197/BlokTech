@@ -1,0 +1,128 @@
+@import '../global/variables';
+
+main {
+	& > section {
+		max-width: 100vw;
+		min-height: 100vh;
+
+		.empty {
+			max-width: 100vw;
+			width: 100vw;
+			max-height: 100vh;
+			height: 100vh;
+			
+			img, p {
+				max-width: 100%;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%)
+			}
+
+			img {
+				width: 100%;
+				top: 6rem;
+			}
+
+			p {
+				bottom: 12rem;
+				font-size: 1.25rem;
+				font-weight: 500;
+				color: $grey;
+			}
+		}
+
+		.card {
+			width: 100vw;
+			height: calc(100vh - 4rem);
+			position: relative;
+			top: 0;
+			left: 0;
+
+			&::before {
+				content: '';
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					to top,
+					rgba(0, 0, 0, 0.75),
+					rgba(0, 0, 0, 0.1),
+					rgba(0, 0, 0, 0)
+				);
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+			}
+
+			.information {
+				z-index: 10;
+				position: absolute;
+				left: 1.5rem;
+                right: 1.5rem;
+				bottom: 1.5rem;
+				color: $white;
+
+				h1 {
+					text-transform: uppercase;
+					font-size: 0.875rem;
+				}
+
+				h2 {
+					letter-spacing: 0.05rem;
+					padding: 0.25rem 0;
+				}
+
+				form {
+					bottom: 0;
+					display: flex;
+					justify-content: space-around;
+					align-items: center;
+					padding: 1.5rem 0;
+					box-sizing: border-box;
+
+                    input {
+                        width: 0;
+                        height: 0;                
+                    }
+
+					label {
+						position: relative;
+						display: inline-block;
+						background-color: white;
+						width: 3.5rem;
+						height: 3.5rem;
+						border-radius: 50%;
+
+                        &[for=dislike] {
+                            color: $red;
+                        }
+                        
+                        &[for=dislike]:hover  {
+                            color: $darkred;
+                        }
+                        
+                        &[for=like]  {
+                            color: $blue;
+                        }
+                        
+                        &[for=like]:hover {
+                            color: $darkblue;
+                        }   
+
+						span {
+							transition: 0.5s;
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+						}
+					}
+				}
+			}
+		}
+	}
+}

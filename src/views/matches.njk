@@ -1,0 +1,30 @@
+{% extends "template/template.njk" %}
+{% block title %}
+    🚀 Jouw matches
+{% endblock %}
+{% block main %}
+    <section class='matches'>
+        {% if matches.length > 0 %}
+
+            <h1 class='h1Like'>🚀 Jouw matches</h1>
+            <ul class='like-list'>
+                {% for match in matches %}
+                    <li class='like-item'>
+                        <article>
+                            <img src='/images/{{match.image}}'>
+                            <section>
+                                <h2>{{match.location}}</h2>
+                                <h3>{{match.username}} · <span>{{match.age}}</span></h3>
+                            </section>
+                        </article>
+                    </li>
+                {% endfor %}
+            </ul>
+    {% else %}
+        <section class='empty'>
+            <img src='/images/empty2.png'>
+            <p>No matches :(</p>
+        </section>
+    {% endif %}
+</section>
+{% endblock %}

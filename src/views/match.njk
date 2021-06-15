@@ -1,8 +1,11 @@
-{% extends "template.njk" %}
+{% extends "template/template.njk" %}
+{% block title %}
+    🔥 It's a match!
+{% endblock %}
 {% block main %}
     <section class='match'>
         <h1 class='match-text'>🔥 It's a match!</h1>
-        <p class='bottom-match-text'>You and <span>{{displayedUser.naam}}</span> have liked each other. Let's play!</p>
+        <p class='bottom-match-text'>You and <span>{{displayedUser.username}}</span> have liked each other. Let's play!</p>
 
         <div class='images'>
             <img src='../../images/zwart.jpg'>
