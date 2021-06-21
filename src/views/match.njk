@@ -9,7 +9,7 @@
 
         <div class='images'>
             <img src='../../images/zwart.jpg'>
-            <img src='../../{{displayedUser.image}}'>
+            <img src='../../images/{{displayedUser.image}}'>
         </div>
 
         <div class='buttons-match'>
@@ -17,4 +17,9 @@
             <a href='/' class='keep-swiping'>Keep swiping</a>
         </div>
     </section>
+    <canvas id="my-canvas"></canvas>
+
+{% endblock %}
+{% block script %}
+    <script src='/js/bundle2.js'></script>
 {% endblock %}

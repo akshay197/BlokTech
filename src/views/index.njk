@@ -28,13 +28,19 @@
                                 </div>
                                 <button class="verzend" type='submit'>Submit</button>
                             </form>
-                        {% else %}
-                            <section class='empty'>
-                                <img src='/images/empty.png'>
-                                <p>You're all done.</p>
-                            </section>
-                        {% endif %}
+                        </section>
                     </section>
-                </section>
-            </article>
-        {% endblock %}
+                </article>
+            </section>
+            <div class='underlay'></div>
+
+        {% else %}
+            <section class='empty'>
+                <img src='/images/empty.png'>
+                <p>You're all done.</p>
+            </section>
+        {% endif %}
+    {% endblock %}
+    {% block script %}
+            <script src='/js/bundle.js'></script>
+    {% endblock %}

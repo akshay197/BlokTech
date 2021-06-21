@@ -1,0 +1,41 @@
+.match {
+    margin: 4rem 1rem;
+
+    .match-text {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .bottom-match-text {
+        text-align: center;
+        width: 75%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .images {
+        display: flex;
+        justify-content: space-around;
+        margin: 4rem 0;
+
+        img {
+            border-radius: 50%;
+            width: 6rem;
+            height: 6rem;
+        }
+    }
+
+    .buttons-match {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+#my-canvas {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    top: 0;
+}
