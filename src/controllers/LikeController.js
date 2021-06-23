@@ -4,7 +4,7 @@
 
 const User = require('../models/User');
 
-const myUserId = '60c8f68cf1bae2b3c7006459';
+const myUserId = '60c8bb5db170e11a79ecf5d9';
 let myUser;
 let displayedUser;
 let unknownUsers;
